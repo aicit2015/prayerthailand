@@ -59,7 +59,7 @@ foreach ($events['events'] as $event) {
     //    Get replyToken
         $replyToken = $event['replyToken'];
     //    Greeting
-        $respMessage = 'ขอบคุณที่แอดเราเป็นเพื่อน บริการสอบเวลาละหมาดให้ท่านได้ กดส่งโลเคชั่นมาหาเรา';
+        $respMessage = 'ขอบคุณที่แอดเราเป็นเพื่อน บริการสอบถามเวลาละหมาดให้ท่านได้ กดส่งโลเคชั่นมาหาเรา';
         $httpClient = new CurlHTTPClient($channel_token);
         $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
         $textMessageBuilder = new TextMessageBuilder($respMessage);
