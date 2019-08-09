@@ -71,7 +71,7 @@ foreach ($events['events'] as $event) {
                     
                     // Return an \GeniusTS\PrayerTimes\Times instance   DateTime())->format('Y-m-d H:i:s');
                     
-                  
+                    result = $connection->query("SELECT follow FROM count_follow_unfollow WHERE id=1");
                     
                     $times = $prayer->times(date("Y-m-d"));
                     $times->setTimeZone(+7);
@@ -95,11 +95,12 @@ foreach ($events['events'] as $event) {
             
 
             
+
             $params = array(
                 'follow' => 2,
                 'id' => 1,
                 );
-            $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow = follow + 1 WHERE id=:id');
+            $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow = :follow WHERE id=:id');
             $statement->execute($params);
 
         $httpClient = new CurlHTTPClient($channel_token);
