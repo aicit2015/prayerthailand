@@ -74,7 +74,7 @@ foreach ($events['events'] as $event) {
                     
                     $result = $connection->query("SELECT follow FROM count_follow_unfollow WHERE id=1");
                     
-                    while($row=pg_fetch_assoc($result)){
+                    while($row=fetch($result)){
                         $val = $row['follow'];
                     }
 
