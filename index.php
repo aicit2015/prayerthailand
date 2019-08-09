@@ -104,12 +104,12 @@ foreach ($events['events'] as $event) {
                         $respMessage  .=  '---------------------' . "\n".
                                           'วันที่ ' . date("d-m-Y"). "\n".
                                           '---------------------' . "\n".
-                                          'ฟัจรฺ      : ' . $times->fajr->format('h:i a') ."\n". 
+                                          'ฟัจรฺ         : ' . $times->fajr->format('h:i a') ."\n". 
                                           'อาทิตย์ขึ้น : ' .  $times->sunrise->format('h:i a') . "\n" . 
-                                          'ซุฮฺริ      : ' . $times->duhr->format('h:i a') . "\n".
-                                          'อัสริ      : ' .  $times->asr->format('h:i a') . "\n".
-                                          'มัฆริบ     : ' . $times->maghrib->format('h:i a') ."\n".
-                                          'อีชา      : ' .  $times->isha->format('h:i a')."\n".
+                                          'ซุฮฺริ         : ' . $times->duhr->format('h:i a') . "\n".
+                                          'อัสริ         : ' .  $times->asr->format('h:i a') . "\n".
+                                          'มัฆริบ       : ' . $times->maghrib->format('h:i a') ."\n".
+                                          'อีชา         : ' .  $times->isha->format('h:i a')."\n".
                                           '---------------------' . "\n".
                                           'METHOD_MUSLIM_WORLD_LEAGUE ';
 
