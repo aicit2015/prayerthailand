@@ -8,7 +8,11 @@ use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
 use \GeniusTS\PrayerTimes\Prayer;
 use \GeniusTS\PrayerTimes\Coordinates;
 
+$result = $connection->pg_query("SELECT follow FROM count_follow_unfollow WHERE id=1");
 
+$myrow = pg_fetch_assoc($result); 
+$value == $myrow[follow];
+$value2 == $myrow[follow];
     //$prayer = new Prayer(new Coordinates($longitude, $latitude));
     // Or
     $prayer = new Prayer();
@@ -23,6 +27,7 @@ use \GeniusTS\PrayerTimes\Coordinates;
     echo $times->asr->format('h:i a');
     echo $times->maghrib->format('h:i a');
     echo $times->isha->format('h:i a');
+    echo $value ;
 
     $host = 'ec2-174-129-226-234.compute-1.amazonaws.com';
     $dbname = 'dbq16h95vt7ppb';
@@ -72,11 +77,11 @@ foreach ($events['events'] as $event) {
                     // Return an \GeniusTS\PrayerTimes\Times instance   DateTime())->format('Y-m-d H:i:s');
                     
                     
-                    $result = $connection->query("SELECT follow FROM count_follow_unfollow WHERE id=1");
+                    $result = $connection->pg_query("SELECT follow FROM count_follow_unfollow WHERE id=1");
                     
-                    while($row=fetch($result)){
-                        $val = $row['follow'];
-                    }
+                    $myrow = pg_fetch_assoc($result); 
+                    $value == $myrow[rating];
+                    $value2 == $myrow[numofratings];
 
               
                     
