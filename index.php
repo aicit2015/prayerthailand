@@ -39,13 +39,34 @@ foreach ($events['events'] as $event) {
     //    Get replyToken
         $replyToken = $event['replyToken'];
     //    Greeting
-        $respMessage = 'ขอบคุณที่แอดเราเป็นเพื่อน กดส่งโลเคชั่นมาหาเรา เราบริการเวลาละหมาดให้ท่านได้';
+        $respMessage = 'ขอบคุณที่แอดเราเป็นเพื่อน บริการสอบเวลาละหมาดให้ท่านได้ กดส่งโลเคชั่นมาหาเรา';
         $httpClient = new CurlHTTPClient($channel_token);
         $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
         $textMessageBuilder = new TextMessageBuilder($respMessage);
         $response = $bot->replyMessage($replyToken, $textMessageBuilder);
     
         }
+
+
+    if ($event['type'] == 'message') {
+            //            Get replyToken
+        $replyToken = $event['replyToken'];
+            switch($event['message']['type']) {
+                case 'location':
+                    $address = $event['message']['address'];
+                     //Reply message
+                    $respMessage = 'Hello, your address is '. $address;
+                break;
+                default:
+            //Reply message
+                    $respMessage = 'Please send location only';
+                break;
+            }
+        $httpClient = new CurlHTTPClient($channel_token);
+        $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+        $textMessageBuilder = new TextMessageBuilder($respMessage);
+        $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+    }
 
     /*
 
