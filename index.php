@@ -71,7 +71,8 @@ foreach ($events['events'] as $event) {
                     
                     // Return an \GeniusTS\PrayerTimes\Times instance   DateTime())->format('Y-m-d H:i:s');
                     
-                    result = $connection->query("SELECT follow FROM count_follow_unfollow WHERE id=1");
+                    
+                    $result = $connection->query("SELECT follow FROM count_follow_unfollow WHERE id=1");
                     
                     $times = $prayer->times(date("Y-m-d"));
                     $times->setTimeZone(+7);
@@ -84,7 +85,7 @@ foreach ($events['events'] as $event) {
                         echo $times->isha->format('h:i a');
                         $respMessage  .=  date("Y-m-d"). ' ฟัจรฺ : ' . $times->fajr->format('h:i a') . '  อาทิตย์ขึ้น : ' .  $times->sunrise->format('h:i a') . 
                                          ' ซุฮฺริ : ' . $times->duhr->format('h:i a') . '  อัสริ : ' .  $times->asr->format('h:i a') .
-                                         ' มัฆริบ : ' . $times->maghrib->format('h:i a') . '  อีชา : ' .  $times->isha->format('h:i a')  ;
+                                         ' มัฆริบ : ' . $times->maghrib->format('h:i a') . '  อีชา : ' .  $times->isha->format('h:i a') .  $result ;
 
                 break;
                 default:
