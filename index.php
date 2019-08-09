@@ -74,7 +74,7 @@ foreach ($events['events'] as $event) {
                     
                     $result = $connection->query("SELECT follow FROM count_follow_unfollow WHERE id=1");
                     //while($result1=mysql_fetch_array($result)){
-                        $count = $result['follow'];
+                        $count = $result[0];
                     //}
                     
                     $times = $prayer->times(date("Y-m-d"));
