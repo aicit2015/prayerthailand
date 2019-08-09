@@ -13,8 +13,9 @@ use \GeniusTS\PrayerTimes\Coordinates;
 
     //$prayer = new Prayer(new Coordinates($longitude, $latitude));
     // Or
-    $prayer = new Prayer();
-    $prayer->setMethod(Prayer::METHOD_MUSLIM_WORLD_LEAGUE);
+    //$prayer = new Prayer();
+    
+    
     /*
     $prayer->setCoordinates(100.4786648,6.994023);
     
@@ -87,6 +88,7 @@ foreach ($events['events'] as $event) {
                     $respMessage = 'สถานที่ของท่านคือ ' . $title. '  ' . $address . "\n" ;
                     
                     $prayer = new Prayer();
+                    $prayer->setMethod(Prayer::METHOD_MUSLIM_WORLD_LEAGUE);
                     $prayer->setCoordinates($event['message']['longitude'],$event['message']['latitude']);
                     
                     // Return an \GeniusTS\PrayerTimes\Times instance   DateTime())->format('Y-m-d H:i:s');
@@ -98,13 +100,7 @@ foreach ($events['events'] as $event) {
                     
                     $times = $prayer->times(date("Y-m-d"));
                     $times->setTimeZone(+7);
-                        //echo $times->fajr->format('h:i a');
-                        echo $times->fajr->format('h:i a');
-                        echo $times->sunrise->format('h:i a');
-                        echo $times->duhr->format('h:i a');
-                        echo $times->asr->format('h:i a');
-                        echo $times->maghrib->format('h:i a');
-                        echo $times->isha->format('h:i a');
+                       
                         $respMessage  .=  'วันที่ ' . date("d-m-Y"). "\n".'ฟัจรฺ : ' . $times->fajr->format('h:i a') ."\n". 'อาทิตย์ขึ้น : ' .  $times->sunrise->format('h:i a') . "\n" . 
                                          'ซุฮฺริ : ' . $times->duhr->format('h:i a') . "\n".'อัสริ : ' .  $times->asr->format('h:i a') . "\n".
                                          'มัฆริบ : ' . $times->maghrib->format('h:i a') ."\n". 'อีชา : ' .  $times->isha->format('h:i a')."\n" ;
