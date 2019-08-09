@@ -24,6 +24,11 @@ use \GeniusTS\PrayerTimes\Coordinates;
     echo $times->maghrib->format('h:i a');
     echo $times->isha->format('h:i a');
 
+    $host = 'ec2-174-129-226-234.compute-1.amazonaws.com';
+    $dbname = 'dbq16h95vt7ppb';
+    $user = 'hzuzvppvlsptcc';
+    $pass = '485c7881706ac7b7d3b10402147ad817ba37b262123a5427709c627ed0451d3c';
+    $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 
 $channel_token ='n3ffnYJ+TbdquJCP2PT/QB2AQ+roUjUrmnpMiPuLcxAMWmUqqiwt+ySwpE8Nf7hv9ntTrhp+J7o2rIApPZsmSL8I0QLWwb0qm69U544aCB1Un5ikx6oXy82au7/+hkaUH2lpI57G8hmAYKjhvAlOlQdB04t89/1O/w1cDnyilFU=';
 $channel_secret = 'edae9c39b22249b067cd729a0ac5ee40';
@@ -36,6 +41,9 @@ if (!is_null($events['events'])) {
 foreach ($events['events'] as $event) {
 //Line API send a lot of event type, we interested in message only.
     if ($event['type'] == 'follow') {
+
+        $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow +=1 WHERE  AND id=1');
+        $statement->execute($params);
     //    Get replyToken
         $replyToken = $event['replyToken'];
     //    Greeting
@@ -44,7 +52,7 @@ foreach ($events['events'] as $event) {
         $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
         $textMessageBuilder = new TextMessageBuilder($respMessage);
         $response = $bot->replyMessage($replyToken, $textMessageBuilder);
-    
+        
         }
 
 
