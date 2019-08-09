@@ -14,8 +14,10 @@ use \GeniusTS\PrayerTimes\Coordinates;
     //$prayer = new Prayer(new Coordinates($longitude, $latitude));
     // Or
     $prayer = new Prayer();
+    $prayer->setMethod(Prayer::METHOD_MUSLIM_WORLD_LEAGUE);
+    /*
     $prayer->setCoordinates(100.4786648,6.994023);
-
+    
     // Return an \GeniusTS\PrayerTimes\Times instance
     $times = $prayer->times('2019-8-9');
     $times->setTimeZone(+7);
@@ -25,7 +27,7 @@ use \GeniusTS\PrayerTimes\Coordinates;
     echo $times->asr->format('h:i a');
     echo $times->maghrib->format('h:i a');
     echo $times->isha->format('h:i a');
-    
+    */
 
     $host = 'ec2-174-129-226-234.compute-1.amazonaws.com';
     $dbname = 'dbq16h95vt7ppb';
