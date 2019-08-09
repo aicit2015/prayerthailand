@@ -42,7 +42,7 @@ foreach ($events['events'] as $event) {
 //Line API send a lot of event type, we interested in message only.
     if ($event['type'] == 'follow') {
 
-        $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow +=1 WHERE  AND id=1');
+        $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow +=1 WHERE  id=1');
         $statement->execute($params);
     //    Get replyToken
         $replyToken = $event['replyToken'];
@@ -96,9 +96,10 @@ foreach ($events['events'] as $event) {
 
             
             $params = array(
-                'id' => '1'
+                'follow' => 2,
+                'id' => 1,
                 );
-            $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow +=1 WHERE   id=:id');
+            $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow = :follow WHERE id=:id');
             $statement->execute($params);
 
         $httpClient = new CurlHTTPClient($channel_token);
