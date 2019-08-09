@@ -65,7 +65,7 @@ foreach ($events['events'] as $event) {
                     
                   
                     
-                    $times = $prayer->times('2017-5-9');
+                    $times = $prayer->times(date("Y-m-d"));
                     $times->setTimeZone(+7);
                         //echo $times->fajr->format('h:i a');
                         echo $times->fajr->format('h:i a');
