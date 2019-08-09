@@ -11,8 +11,8 @@ use \GeniusTS\PrayerTimes\Coordinates;
 $result = $connection->query("SELECT follow FROM count_follow_unfollow WHERE id=1");
 
 $myrow = fetch_assoc($result); 
-$value == $myrow[follow];
-$value2 == $myrow[follow];
+$value == $myrow['follow'];
+$value2 == $myrow['follow'];
     //$prayer = new Prayer(new Coordinates($longitude, $latitude));
     // Or
     $prayer = new Prayer();
