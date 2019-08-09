@@ -96,10 +96,9 @@ foreach ($events['events'] as $event) {
             $pass = '485c7881706ac7b7d3b10402147ad817ba37b262123a5427709c627ed0451d3c';
             $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
             $params = array(
-                'follow' => '1',
-                'id' => '1',
+                'id' => '1'
                 );
-            $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow =:follow WHERE  AND id=:id');
+            $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow +=1 WHERE   id=:id');
             $statement->execute($params);
 
         $httpClient = new CurlHTTPClient($channel_token);
