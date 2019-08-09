@@ -85,7 +85,7 @@ foreach ($events['events'] as $event) {
                     $address = $event['message']['address'];
                     $title = $event['message']['title'];
                      //Reply message
-                    $respMessage = 'สถานที่ของท่านคือ ' . $title. '  ' . $address . "\n" ;
+                    $respMessage = $title. '  ' . $address . "\n" ;
                     
                     $prayer = new Prayer();
                     $prayer->setMethod(Prayer::METHOD_MUSLIM_WORLD_LEAGUE);
