@@ -56,7 +56,7 @@ foreach ($events['events'] as $event) {
                     $address = $event['message']['address'];
                     $title = $event['message']['title'];
                      //Reply message
-                    $respMessage = 'Hello, your address is '. $address . $title;
+                    $respMessage = 'สลามพี่น้อง สถานที่ของท่านคือ ' . $title. '  ' . $address ;
                 break;
                 default:
             //Reply message
