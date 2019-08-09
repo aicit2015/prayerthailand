@@ -71,9 +71,9 @@ foreach ($events['events'] as $event) {
                         echo $times->asr->format('h:i a');
                         echo $times->maghrib->format('h:i a');
                         echo $times->isha->format('h:i a');
-                        $respMessage .= 'ฟัจรฺ : ' . $times->fajr->format('h:i a') . '  อาทิตย์ขึ้น : ' .  $times->sunrise->format('h:i a') .
-                                         ' ซุฮฺริ : ' . $times->duhr->format('h:i a') . '  อัสริ : ' .  $times->asr->format('h:i a') .
-                                         ' มัฆริบ : ' . $times->maghrib->format('h:i a') . '  อีชา : ' .  $times->isha->format('h:i a')  ;
+                        $respMessage .= '\r\n ฟัจรฺ : ' . $times->fajr->format('h:i a') . '  อาทิตย์ขึ้น : ' .  $times->sunrise->format('h:i a') . 
+                                         '\r\n ซุฮฺริ : ' . $times->duhr->format('h:i a') . '  อัสริ : ' .  $times->asr->format('h:i a') .
+                                         '\r\n มัฆริบ : ' . $times->maghrib->format('h:i a') . '  อีชา : ' .  $times->isha->format('h:i a')  ;
 
                 break;
                 default:
