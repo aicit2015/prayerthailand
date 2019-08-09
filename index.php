@@ -54,8 +54,9 @@ foreach ($events['events'] as $event) {
             switch($event['message']['type']) {
                 case 'location':
                     $address = $event['message']['address'];
+                    $title = $event['message']['title'];
                      //Reply message
-                    $respMessage = 'Hello, your address is '. $address;
+                    $respMessage = 'Hello, your address is '. $address . $title;
                 break;
                 default:
             //Reply message
