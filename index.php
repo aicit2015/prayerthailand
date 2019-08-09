@@ -57,12 +57,34 @@ foreach ($events['events'] as $event) {
                     $title = $event['message']['title'];
                      //Reply message
                     $respMessage = 'สลามพี่น้อง สถานที่ของท่านคือ ' . $title. '  ' . $address ;
+                    
+                    $prayer = new Prayer();
+                    $prayer->setCoordinates($event['message']['longitude'],$event['message']['latitude']);
+                    
+                    // Return an \GeniusTS\PrayerTimes\Times instance   DateTime())->format('Y-m-d H:i:s');
+                    $times = $prayer->times('2017-5-9');
+                    $times->setTimeZone(+7);
+                        //echo $times->fajr->format('h:i a');
+                        echo $times->fajr->format('h:i a');
+                        echo $times->sunrise->format('h:i a');
+                        echo $times->duhr->format('h:i a');
+                        echo $times->asr->format('h:i a');
+                        echo $times->maghrib->format('h:i a');
+                        echo $times->isha->format('h:i a');
+                        $respMessage .= 'ฟัจรฺ : ' . $times->fajr->format('h:i a') . '  อาทิตย์ขึ้น : ' .  $times->sunrise->format('h:i a') .
+                                         ' ซุฮฺริ : ' . $times->duhr->format('h:i a') . '  อัสริ : ' .  $times->asr->format('h:i a') .
+                                         ' มัฆริบ : ' . $times->maghrib->format('h:i a') . '  อีชา : ' .  $times->isha->format('h:i a')  ;
+
                 break;
                 default:
             //Reply message
                     $respMessage = 'Please send location only';
                 break;
             }
+
+        
+
+
         $httpClient = new CurlHTTPClient($channel_token);
         $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
         $textMessageBuilder = new TextMessageBuilder($respMessage);
