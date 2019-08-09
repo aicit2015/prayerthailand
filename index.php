@@ -103,7 +103,6 @@ foreach ($events['events'] as $event) {
             
 
             $params = array(
-                'follow' => 2,
                 'id' => 1,
                 );
             $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow = (SELECT max(follow) + 1  FROM count_follow_unfollow WHERE id=1) WHERE id=:id');
