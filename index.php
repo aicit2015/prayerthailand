@@ -107,9 +107,9 @@ foreach ($events['events'] as $event) {
                                           'ฟัจรฺ : ' . $times->fajr->format('h:i a') ."\n". 
                                           'อาทิตย์ขึ้น : ' .  $times->sunrise->format('h:i a') . "\n" . 
                                           'ซุฮฺริ : ' . $times->duhr->format('h:i a') . "\n".'อัสริ : ' .  $times->asr->format('h:i a') . "\n".
-                                          'มัฆริบ : ' . $times->maghrib->format('h:i a') ."\n". 'อีชา : ' .  $times->isha->format('h:i a')."\n" ;
+                                          'มัฆริบ : ' . $times->maghrib->format('h:i a') ."\n". 'อีชา : ' .  $times->isha->format('h:i a')."\n".
                                           '------------------' . "\n".
-                                          'METHOD_MUSLIM_WORLD_LEAGUE '
+                                          'METHOD_MUSLIM_WORLD_LEAGUE ';
 
                 break;
                 default:
