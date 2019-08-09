@@ -56,17 +56,14 @@ foreach ($events['events'] as $event) {
                     $address = $event['message']['address'];
                     $title = $event['message']['title'];
                      //Reply message
-                    $respMessage = 'สลามพี่น้อง สถานที่ของท่านคือ ' . $title. '  ' . $address . '  ' ;
+                    $respMessage = 'สลามพี่น้อง สถานที่ของท่านคือ ' . $title. '  ' . $address . '--->' ;
                     
                     $prayer = new Prayer();
                     $prayer->setCoordinates($event['message']['longitude'],$event['message']['latitude']);
                     
                     // Return an \GeniusTS\PrayerTimes\Times instance   DateTime())->format('Y-m-d H:i:s');
                     
-                    $httpClient = new CurlHTTPClient($channel_token);
-                    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-                    $textMessageBuilder = new TextMessageBuilder($respMessage);
-                    $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+                  
                     
                     $times = $prayer->times('2017-5-9');
                     $times->setTimeZone(+7);
