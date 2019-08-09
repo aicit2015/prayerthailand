@@ -93,7 +93,22 @@ foreach ($events['events'] as $event) {
                     
                     // Return an \GeniusTS\PrayerTimes\Times instance   DateTime())->format('Y-m-d H:i:s');
                     
-                    
+                    //-----------------------------insert user to db
+                    $sql = sprintf("SELECT * FROM user_friend WHERE user_id='%s' ", $event['source']['userId']);
+                    $result = $connection->query($sql);
+                    error_log($sql);
+                    if($result == false || $result->rowCount() <=0) {
+                         $params = array(
+                        'userID' => $event['source']['userId']
+                        );
+                        $statement = $connection->prepare('INSERT INTO user_friend ( user_id )
+                        VALUES ( :userID )');
+                        $statement->execute($params);
+                    }
+
+
+
+                    //-------------------------------------------------------------------------------------------------
                    
 
               
