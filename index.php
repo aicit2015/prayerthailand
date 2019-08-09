@@ -59,7 +59,7 @@ foreach ($events['events'] as $event) {
     //    Get replyToken
         $replyToken = $event['replyToken'];
     //    Greeting
-        $respMessage = 'ขอบคุณที่แอดเราเป็นเพื่อน บริการสอบถามเวลาละหมาดให้ท่านได้ กดส่งโลเคชั่นมาหาเรา';
+        $respMessage = 'ขอบคุณที่แอดเราเป็นเพื่อน บริการสอบถามเวลาละหมาด เพียงแค่กดส่งโลเคชั่นมาหาเรา';
         $httpClient = new CurlHTTPClient($channel_token);
         $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
         $textMessageBuilder = new TextMessageBuilder($respMessage);
@@ -82,7 +82,7 @@ foreach ($events['events'] as $event) {
                     $address = $event['message']['address'];
                     $title = $event['message']['title'];
                      //Reply message
-                    $respMessage = 'สถานที่ของท่านคือ ' . $title. '  ' . $address . '--->' ;
+                    $respMessage = 'สถานที่ของท่านคือ ' . $title. '  ' . $address . "\n" ;
                     
                     $prayer = new Prayer();
                     $prayer->setCoordinates($event['message']['longitude'],$event['message']['latitude']);
