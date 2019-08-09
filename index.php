@@ -30,18 +30,24 @@ $channel_secret = 'edae9c39b22249b067cd729a0ac5ee40';
 //Get message from Line API
 $content = file_get_contents('php://input');
 $events = json_decode($content, true);
+
 if (!is_null($events['events'])) {
 //Loop through each event
 foreach ($events['events'] as $event) {
 //Line API send a lot of event type, we interested in message only.
-    $replyToken = $event['replyToken'];
-    //Image
-    $originalContentUrl ='https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';    
-    $previewImageUrl ='https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
-    $httpClient = new CurlHTTPClient($channel_token);
-    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-    $textMessageBuilder = new ImageMessageBuilder($originalContentUrl, $previewImageUrl);
-    $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+    if ($event['type'] == 'follow') {
+    //    Get replyToken
+        $replyToken = $event['replyToken'];
+    //    Greeting
+        $respMessage = 'ขอบคุณที่แอดเราเป็นเพื่อน กดส่งโลเคชั่นมาหาเรา เราบริการเวลาละหมาดให้ท่านได้';
+        $httpClient = new CurlHTTPClient($channel_token);
+        $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+        $textMessageBuilder = new TextMessageBuilder($respMessage);
+        $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+    
+        }
+
+    /*
 
     //$prayer = new Prayer(new Coordinates($longitude, $latitude));
     // Or
@@ -52,6 +58,7 @@ foreach ($events['events'] as $event) {
     $times = $prayer->times('2017-5-9');
     $times->setTimeZone(+3);
     //echo $times->fajr->format('h:i a');
+    */
 
 
 /*
