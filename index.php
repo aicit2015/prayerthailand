@@ -8,9 +8,9 @@ use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
 use \GeniusTS\PrayerTimes\Prayer;
 use \GeniusTS\PrayerTimes\Coordinates;
 
-$result = $connection->pg_query("SELECT follow FROM count_follow_unfollow WHERE id=1");
+$result = $connection->query("SELECT follow FROM count_follow_unfollow WHERE id=1");
 
-$myrow = pg_fetch_assoc($result); 
+$myrow = fetch_assoc($result); 
 $value == $myrow[follow];
 $value2 == $myrow[follow];
     //$prayer = new Prayer(new Coordinates($longitude, $latitude));
