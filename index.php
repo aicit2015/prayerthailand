@@ -25,8 +25,8 @@ use \GeniusTS\PrayerTimes\Coordinates;
     echo $times->isha->format('h:i a');
 
 
-$channel_token ='DYKKHgUhUFUOGn1tPbP1UGEJFV/Ww+MsAJ8liQVFG5RkZ6D/EryVeymFXbDpn+zciZiMIJ3mx0lAltZjwKX3mDu50NVNb5itvd7pP8w+pXzWogTAjgUVC1BiO8ibanzREjPMJ/GJZK14yTclSGs8/QdB04t89/1O/w1cDnyilFU=';
-$channel_secret = 'c0236b5dc114d1e52688890efdd16b93';
+$channel_token ='n3ffnYJ+TbdquJCP2PT/QB2AQ+roUjUrmnpMiPuLcxAMWmUqqiwt+ySwpE8Nf7hv9ntTrhp+J7o2rIApPZsmSL8I0QLWwb0qm69U544aCB1Un5ikx6oXy82au7/+hkaUH2lpI57G8hmAYKjhvAlOlQdB04t89/1O/w1cDnyilFU=';
+$channel_secret = 'edae9c39b22249b067cd729a0ac5ee40';
 //Get message from Line API
 $content = file_get_contents('php://input');
 $events = json_decode($content, true);
