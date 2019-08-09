@@ -8,11 +8,9 @@ use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
 use \GeniusTS\PrayerTimes\Prayer;
 use \GeniusTS\PrayerTimes\Coordinates;
 
-$result = $connection->query("SELECT follow FROM count_follow_unfollow WHERE id=1");
+//$result = $connection->query("SELECT follow FROM count_follow_unfollow WHERE id=1");
 
-$myrow = fetch_assoc($result); 
-$value == $myrow['follow'];
-$value2 == $myrow['follow'];
+
     //$prayer = new Prayer(new Coordinates($longitude, $latitude));
     // Or
     $prayer = new Prayer();
@@ -77,11 +75,7 @@ foreach ($events['events'] as $event) {
                     // Return an \GeniusTS\PrayerTimes\Times instance   DateTime())->format('Y-m-d H:i:s');
                     
                     
-                    $result = $connection->pg_query("SELECT follow FROM count_follow_unfollow WHERE id=1");
-                    
-                    $myrow = pg_fetch_assoc($result); 
-                    $value == $myrow[rating];
-                    $value2 == $myrow[numofratings];
+                   
 
               
                     
@@ -112,7 +106,7 @@ foreach ($events['events'] as $event) {
                 'follow' => 2,
                 'id' => 1,
                 );
-            $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow = :follow WHERE id=:id');
+            $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow = (SELECT max(follow) + 1  FROM count_follow_unfollow WHERE id=1) WHERE id=:id');
             $statement->execute($params);
 
         $httpClient = new CurlHTTPClient($channel_token);
