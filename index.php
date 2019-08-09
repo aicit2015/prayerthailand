@@ -74,7 +74,7 @@ foreach ($events['events'] as $event) {
                     
                     $result = $connection->query("SELECT follow FROM count_follow_unfollow WHERE id=1");
                     
-                    $val = pg_fetch_result( $result , 1, 0);
+                    $val = pg_fetch_result( $result , 'follow', 0);
                     
                     $times = $prayer->times(date("Y-m-d"));
                     $times->setTimeZone(+7);
