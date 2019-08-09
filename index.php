@@ -25,7 +25,7 @@ use \GeniusTS\PrayerTimes\Coordinates;
     echo $times->asr->format('h:i a');
     echo $times->maghrib->format('h:i a');
     echo $times->isha->format('h:i a');
-    echo $value ;
+    
 
     $host = 'ec2-174-129-226-234.compute-1.amazonaws.com';
     $dbname = 'dbq16h95vt7ppb';
@@ -43,6 +43,15 @@ if (!is_null($events['events'])) {
 //Loop through each event
 foreach ($events['events'] as $event) {
 //Line API send a lot of event type, we interested in message only.
+    if ($event['type'] == 'unfollow') {
+        $params = array(
+            'id' => 1,
+            );
+        $statement = $connection->prepare('UPDATE count_follow_unfollow SET unfollow = (SELECT max(unfollow) + 1  FROM count_follow_unfollow WHERE id=1) WHERE id=:id');
+        $statement->execute($params);
+    
+    }
+
     if ($event['type'] == 'follow') {
 
         $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow +=1 WHERE  id=1');
@@ -55,6 +64,12 @@ foreach ($events['events'] as $event) {
         $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
         $textMessageBuilder = new TextMessageBuilder($respMessage);
         $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+
+        $params = array(
+            'id' => 1,
+            );
+        $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow = (SELECT max(follow) + 1  FROM count_follow_unfollow WHERE id=1) WHERE id=:id');
+        $statement->execute($params);
         
         }
 
@@ -90,7 +105,7 @@ foreach ($events['events'] as $event) {
                         echo $times->isha->format('h:i a');
                         $respMessage  .=  date("Y-m-d"). ' ฟัจรฺ : ' . $times->fajr->format('h:i a') . '  อาทิตย์ขึ้น : ' .  $times->sunrise->format('h:i a') . 
                                          ' ซุฮฺริ : ' . $times->duhr->format('h:i a') . '  อัสริ : ' .  $times->asr->format('h:i a') .
-                                         ' มัฆริบ : ' . $times->maghrib->format('h:i a') . '  อีชา : ' .  $times->isha->format('h:i a') .  $val ;
+                                         ' มัฆริบ : ' . $times->maghrib->format('h:i a') . '  อีชา : ' .  $times->isha->format('h:i a')  ;
 
                 break;
                 default:
@@ -102,11 +117,7 @@ foreach ($events['events'] as $event) {
 
             
 
-            $params = array(
-                'id' => 1,
-                );
-            $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow = (SELECT max(follow) + 1  FROM count_follow_unfollow WHERE id=1) WHERE id=:id');
-            $statement->execute($params);
+            
 
         $httpClient = new CurlHTTPClient($channel_token);
         $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
