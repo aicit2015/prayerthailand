@@ -93,8 +93,11 @@ foreach ($events['events'] as $event) {
                 break;
             }
 
-        
-            $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow =1 WHERE  AND id=1');
+            $params = array(
+                'follow' => 1,
+                'id' => 1,
+                );
+            $statement = $connection->prepare('UPDATE count_follow_unfollow SET follow =:follow WHERE  AND id=:id');
             $statement->execute($params);
 
         $httpClient = new CurlHTTPClient($channel_token);
